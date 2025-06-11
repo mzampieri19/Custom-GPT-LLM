@@ -3,5 +3,4 @@ extracted_train_data.txt
 extracted_val_data.txt
 model-01.pkl
 vocab.txt
-openwebtxt-10k-test.jsonl
-openwebtxt-10k.jsonl
+data/
