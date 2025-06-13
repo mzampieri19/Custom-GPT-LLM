@@ -1,6 +1,24 @@
+# Virtual environment
 .venv/
+
+# Overall data
+data/
+
+# V1 data files 
 extracted_train_data.txt
 extracted_val_data.txt
-model-01.pkl
 vocab.txt
-data/
+
+# V1 model
+model-01.pkl
+
+# V2 data files
+train_data.txt
+val_data.txt
+vocab_books.txt
+
+# V2 model
+model-02.pkl
+
+# V3 model
+model-03.pkl

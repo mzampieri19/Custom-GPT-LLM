@@ -1,19 +1,22 @@
 import os
-import json
 import tqdm
 import random
 
-input_file = 'openwebtext-10k.jsonl'
-output_train_file = 'extracted_train_data.txt'
-output_val_file = 'extracted_val_data.txt'
-vocab_file = 'vocab.txt'
+input_dir = 'data'
+output_train_file = 'train_data.txt'
+output_val_file = 'val_data.txt'
+vocab_file = 'vocab_books.txt'
 
 vocab = set()
 train_ratio = 0.9  # 90% train, 10% val
 
-# Read all lines from the input file
-with open(input_file, 'r') as f:
-    lines = f.readlines()
+# Read all lines from all txt files in the input directory
+lines = []
+for file in os.listdir(input_dir):
+    file_path = os.path.join(input_dir, file)
+    if os.path.isfile(file_path) and file.endswith('.txt'):
+        with open(file_path, 'r') as f:
+            lines.extend(f.readlines())
 
 random.shuffle(lines)  # Shuffle for random split
 
@@ -24,8 +27,7 @@ val_lines = lines[split_idx:]
 def process_and_write(lines, output_file):
     with open(output_file, 'w') as out_f:
         for line in tqdm.tqdm(lines):
-            data = json.loads(line)
-            text = data.get('text', '')
+            text = line.strip()
             if text:
                 out_f.write(text + '\n')
                 words = text.split()

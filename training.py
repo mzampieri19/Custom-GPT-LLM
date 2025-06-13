@@ -20,9 +20,9 @@ batch_size = args.batch_size
 max_iters = 5000
 learning_rate = 3e-4
 eval_iters = 100
-n_embd = 768
-n_head = 8
-n_layer = 8
+n_embd = 128
+n_head = 4
+n_layer = 4
 dropout = 0.2
 
 chars = ''
@@ -96,19 +96,7 @@ class MultiHeadAttention(nn.Module):
         out = self.dropout(self.proj(out))
         return out
     
-class MultiHeadAttention(nn.Module):
-    def __init__(self, num_heads, head_size):
-        super().__init__()
-        self.heads = nn.ModuleList([Head(head_size) for _ in range(num_heads)])
-        self.proj = nn.Linear(head_size * num_heads, n_embd)
-        self.dropout = nn.Dropout(dropout)
-
-    def forward(self, x):
-        out = torch.cat([h(x) for h in self.heads], dim=-1) # (B, T, F) -> (B, T, [h1, h1, h1, h1, h2, h2, h2, h2, h3, h3, h3, h3])
-        out = self.dropout(self.proj(out))
-        return out
-    
-class FeedFoward(nn.Module):
+class FeedForward(nn.Module):
     def __init__(self, n_embd):
         super().__init__()
         self.net = nn.Sequential(
@@ -127,7 +115,7 @@ class Block(nn.Module):
         super().__init__()
         head_size = n_embd // n_head
         self.sa = MultiHeadAttention(n_head, head_size)
-        self.ffwd = FeedFoward(n_embd)
+        self.ffwd = FeedForward(n_embd)
         self.ln1 = nn.LayerNorm(n_embd)
         self.ln2 = nn.LayerNorm(n_embd)
 
