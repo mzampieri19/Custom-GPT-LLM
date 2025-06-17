@@ -6,6 +6,30 @@ This project demonstrates how to build, train, and use a custom Generative Pre-t
 
 ---
 
+## Model Versions
+
+1. **model-01**
+  - Trained for a few thousand epochs on a minimal dataset and vocabulary.
+  - Served as a proof of concept to validate the model architecture.
+  - Output was mostly incoherent, but demonstrated basic grammar and sentence structure.
+
+2. **model-02**
+  - Used the same dataset as model-01 but trained for approximately 50,000 epochs.
+  - Produced text with noticeably improved grammar and structure.
+  - Still generated many non-existent words and some incoherent sentences.
+
+3. **model-03**
+  - Trained on a much larger dataset (~300,000 lines) of classic literature from Project Gutenberg.
+  - Generated text with strong grammar and human-like sentence structure.
+  - Occasionally produced non-existent words, but overall output was much closer to real English.
+
+4. **model-04**
+  - Utilized a Common Crawl dataset with 1 million lines (~4GB).
+  - Training required splitting the dataset into sections due to its size; completed 5,000 epochs so far.
+  - Model evaluation is ongoing.
+
+---
+
 ## Project Structure
 
 | File Name                  | Description                                                                 |

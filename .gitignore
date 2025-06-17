@@ -22,3 +22,11 @@ model-02.pkl
 
 # V3 model
 model-03.pkl
+
+# V4 data files
+crawl_data_train.txt
+
+# V4 model
+model-04.pkl
+model-04-5000.pkl
+checkpoint_5000.pt
