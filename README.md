@@ -26,7 +26,7 @@ This project demonstrates how to build, train, and use a custom Generative Pre-t
 4. **model-04**
   - Utilized a Common Crawl dataset with 1 million lines (~4GB).
   - Training required splitting the dataset into sections due to its size; completed 5,000 epochs so far.
-  - Model evaluation is ongoing.
+  - Ran on google colab, had best performance so far, still unable to use all 4 GB but even with only 100K lines had great performance.
 
 ---
 
